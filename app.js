@@ -10,11 +10,9 @@ app.use(cors())
 app.use(bodyParser.json())
 
 //Import Routes
-const postsRoute = require('./routes/posts');
 const userRoute = require('./routes/user');
 
 //creating Routes
-app.use('/posts', postsRoute);
 app.use('/user', userRoute);
 
 //Route
