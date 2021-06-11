@@ -29,7 +29,8 @@ const UserSchema = mongoose.Schema({
 	},
 	fecha_de_nacimiento: {
 		type: Date,
-		required: true
+		required: true,
+		trim: true,
 	}
 });
 
