@@ -4,7 +4,7 @@ const Joi = require('joi');
 //validate the fields in registerValidation
 const registerValidation = data => {
 	const RegistrationSchema = Joi.object({
-		name: Joi.string().min(6).required(),
+		nombre: Joi.string().min(6).required(),
 		email: Joi.string().min(6).required().email(),
 	});
 
@@ -14,7 +14,7 @@ const registerValidation = data => {
 //validate the fields in registerValidation
 const loginValidation = data => {
 	const LoginSchema = Joi.object({
-        name: Joi.string().min(6).required(),
+        nombre: Joi.string().min(6).required(),
 		email: Joi.string().min(6).required().email()
 	});
 
