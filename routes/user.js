@@ -31,7 +31,8 @@ router.post('/register', async (req, res) => {
         doc_identidad: req.body.doc_identidad,
 		email: req.body.email,
         celular: req.body.celular,
-        fecha_de_nacimiento: req.body.fecha_de_nacimiento
+        fecha_de_nacimiento: req.body.fecha_de_nacimiento,
+        adjuntar_archivo: req.body.adjuntar_archivo
 	});
 
 	try{
@@ -69,6 +70,10 @@ router.patch("/list/:id", async (req, res) => {
 
         if (req.body.fecha_de_nacimiento) {
             user.fecha_de_nacimiento = req.body.fecha_de_nacimiento;
+        }
+
+        if (req.body.adjuntar_archivo) {
+            user.adjuntar_archivo = req.body.adjuntar_archivo;
         }
         await user.save();
         res.send(user);

@@ -29,8 +29,10 @@ const UserSchema = mongoose.Schema({
 	},
 	fecha_de_nacimiento: {
 		type: Date,
-		required: true,
-		trim: true,
+		required: true
+	},
+	adjuntar_archivo: {
+		type: String,
 	}
 });
 
