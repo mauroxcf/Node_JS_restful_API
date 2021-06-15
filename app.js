@@ -11,10 +11,12 @@ app.use(express.urlencoded({extended: true}));
 //Import Routes
 const userRoute = require('./routes/user');
 const authAdminRoute = require('./routes/auth');
+const authAdminDashBoard = require('./routes/authDashBoard');
 
 //creating Routes
 app.use('/user', userRoute);
 app.use('/auth', authAdminRoute);
+app.use('/dashboard', authAdminDashBoard);
 
 //Route
 app.get('/', (req, res) => {

@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const AdminUser = require('../models/Auth');
 const joi = require('joi');
+const User = require('../models/User');
 
 
 // this validation is for the admin user input prerequisites
@@ -77,8 +78,9 @@ router.post('/login', async (req, res) => {
         // if error exist then send back the error
         if (error) return res.status(400).send(error.details[0].message);
         else {
-            // make the login event
-            res.send('Success');
+            // sending back the token
+            const token = jwt.sign({ _id: admonUser._id}, process.env.TOKEN_SECRET);
+            res.header('auth-token', token).send(token);
         }
 
     } catch (error) {
