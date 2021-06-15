@@ -28,6 +28,7 @@ npm install express mongoose dotenv joi --save
 ```
 4. Ajustar base de datos de MongoDB cluster dentro del archivo .env, pegar el codigo de coneccion.
 ```
+touch .env && emacs .env
 DB_CONNECTION = <paste here your connection string of the database of MONGODB cluster>
 ```
 5. Correr la aplicacion.
