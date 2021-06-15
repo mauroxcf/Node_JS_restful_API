@@ -1,6 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
+const multer = require('multer');
+//const fs = require('fs');
+//const path = require('path');
+
+//set up multer for storing uploaded files
+const upload = multer({
+    limits:{
+        fileSize:5000000,
+    },
+    fileFilter(req, file, cb){
+        if(!file.originalname.match(/\.(jpg|png|JPG|PNG|JPEG|jpeg)$/))
+        return cb(new Error('This is not the correct format of the file'))
+        cb (undefined, true)
+    }
+})
+
+
 //Import MongoDB models
 const User = require('../models/User')
 
@@ -14,7 +31,7 @@ router.get('/list', async (req, res) => {
 })
 
 // using the router method post to register a user
-router.post('/register', async (req, res) => {
+router.post('/register', upload.single('adjuntar_archivo'), async (req, res) => {
 
 	// Validate User
 	const { error } = registerValidation(req.body);
@@ -32,7 +49,7 @@ router.post('/register', async (req, res) => {
 		email: req.body.email,
         celular: req.body.celular,
         fecha_de_nacimiento: req.body.fecha_de_nacimiento,
-        adjuntar_archivo: req.body.adjuntar_archivo
+        adjuntar_archivo: req.file.buffer
 	});
 
 	try{

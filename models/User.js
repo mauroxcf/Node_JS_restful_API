@@ -32,7 +32,8 @@ const UserSchema = mongoose.Schema({
 		required: true
 	},
 	adjuntar_archivo: {
-		type: String,
+		type: Buffer,
+		contentType: String
 	}
 });
 

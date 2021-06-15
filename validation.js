@@ -10,7 +10,7 @@ const registerValidation = data => {
 		email: Joi.string().min(6).required().email(),
         celular: Joi.number().min(6).required(),
         fecha_de_nacimiento: Joi.date().min(6).required(),
-        adjuntar_archivo: Joi.string().min(1).required(),
+        adjuntar_archivo: Joi.binary().encoding('base64'),
 	});
 
 	return RegistrationSchema.validate(data);
