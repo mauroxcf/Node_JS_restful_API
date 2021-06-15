@@ -5,15 +5,16 @@ require('dotenv/config');
 
 const app = express();
 
-app.use(cors())
-app.use(express.json())
+app.use(express.json(), cors());
 app.use(express.urlencoded({extended: true}));
 
 //Import Routes
 const userRoute = require('./routes/user');
+const authAdminRoute = require('./routes/auth');
 
 //creating Routes
 app.use('/user', userRoute);
+app.use('/auth', authAdminRoute);
 
 //Route
 app.get('/', (req, res) => {
